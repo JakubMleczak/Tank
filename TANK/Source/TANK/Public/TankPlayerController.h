@@ -17,5 +17,5 @@ class TANK_API ATankPlayerController : public APlayerController
 public:
 	ATank1* GetControlledTank() const;
 
-	
+	virtual void BeginPlay() override;
 };

@@ -2,7 +2,10 @@
 
 #include "TankPlayerController.h"
 
-
+void ATankPlayerController::BeginPlay()
+{
+	Super::BeginPlay();
+}
 
 ATank1* ATankPlayerController::GetControlledTank() const
 {
