@@ -1,8 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "Tank1.h"
-#include "TankPlayerController.h"
+#include "TankAIController.h"
 
-void ATankPlayerController::BeginPlay()
+
+void ATankAIController::BeginPlay()
 {
 	Super::BeginPlay();
 	auto ControlledTank = GetControlledTank();
@@ -16,7 +17,9 @@ void ATankPlayerController::BeginPlay()
 		}
 }
 
-ATank1* ATankPlayerController::GetControlledTank() const
+ATank1* ATankAIController::GetControlledTank() const
 {
-return Cast<ATank1>(GetPawn());
+	return Cast<ATank1>(GetPawn());
 }
+
+
