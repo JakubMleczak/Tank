@@ -18,5 +18,5 @@ class TANK_API ATankAIController : public AAIController
 
 	virtual void BeginPlay() override;
 	
-	
+	ATank1* GetPlayerTank() const;
 };

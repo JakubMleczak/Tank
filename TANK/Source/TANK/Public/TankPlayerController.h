@@ -18,4 +18,6 @@ public:
 	ATank1 * GetControlledTank() const;
 
 	virtual void BeginPlay() override;
+	void AimTowardsCross();
+	virtual void Tick(float DeltaTime) override;
 };

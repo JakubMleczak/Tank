@@ -2,6 +2,15 @@
 #include "Tank1.h"
 #include "TankPlayerController.h"
 
+
+
+void ATankPlayerController::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+ }
+
+
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
@@ -19,4 +28,13 @@ void ATankPlayerController::BeginPlay()
 ATank1* ATankPlayerController::GetControlledTank() const
 {
 return Cast<ATank1>(GetPawn());
+}
+
+void ATankPlayerController::AimTowardsCross()
+{
+	if (!GetControlledTank())
+	{
+		return nullptr;
+	}
+
 }
