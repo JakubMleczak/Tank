@@ -7,6 +7,7 @@
 void ATankPlayerController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	AimTowardsCross();
 
  }
 
@@ -34,7 +35,37 @@ void ATankPlayerController::AimTowardsCross()
 {
 	if (!GetControlledTank())
 	{
-		return nullptr;
+		return;
 	}
 
+	FVector HitLocation;
+	if (GetRayLoc(HitLocation))
+	{
+		//UE_LOG(LogTemp, Warning, TEXT("HitLoaction: %s"), *HitLocation.ToString());
+	}
+}
+bool ATankPlayerController::GetRayLoc(FVector& HitLocation) const
+{
+	int32 ViewportSizeX, ViewportSizeY;
+	GetViewportSize(ViewportSizeX, ViewportSizeY);
+	auto ScreenLocation = FVector2D(ViewportSizeX * CorsshairXLocation, ViewportSizeY * CorsshairYLocation);
+
+	FVector LookDir;
+	if (GetLook(ScreenLocation, LookDir))
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Look: %s"), *LookDir.ToString());
+	}
+	return true;
+}
+
+bool ATankPlayerController::GetLook(FVector2D ScreenLocation, FVector& LookDir) const
+{
+
+	FVector CameraWorldLocation;
+	
+	 return DeprojectScreenPositionToWorld(
+		ScreenLocation.X,
+		ScreenLocation.Y, 
+		CameraWorldLocation,
+		LookDir);
 }
