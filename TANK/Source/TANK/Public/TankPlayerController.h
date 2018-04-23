@@ -25,11 +25,14 @@ private:
 
 	bool GetLook(FVector2D ScreenLocation, FVector & LookDir) const;
 
+	bool GetLookVectorHitLocation(FVector LookDirection, FVector & HitLocation) const;
+
 	UPROPERTY(EditAnywhere)
 		float CorsshairXLocation = 0.5;
 
 	UPROPERTY(EditAnywhere)
 		float CorsshairYLocation = 0.33333;
-
+	UPROPERTY(EditAnywhere)
+		float LineTraceRange = 1000000;
 	 
 };

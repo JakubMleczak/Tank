@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
-
+#include "TankAimComp.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "Tank1.generated.h"
@@ -10,8 +10,17 @@ UCLASS()
 class TANK_API ATank1 : public APawn
 {
 	GENERATED_BODY()
-
+	
 public:
+	void Aimat(FVector HitLocation);
+
+protected:
+	UTankAimComp * TankAinComp = nullptr;
+
+
+
+
+private:
 	// Sets default values for this pawn's properties
 	ATank1();
 
