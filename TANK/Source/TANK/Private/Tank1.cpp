@@ -3,6 +3,8 @@
 #include "Tank1.h"
 
 
+
+
 // Sets default values
 ATank1::ATank1()
 {
@@ -34,6 +36,10 @@ void ATank1::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void ATank1::Aimat(FVector HitLocation)
 {
-	TankAinComp->AimAt(HitLocation);
+	TankAinComp->AimAt(HitLocation,LaunchSpeed);
 	
+}
+void ATank1::SetBarrelReference(UStaticMeshComponent * BarrelToSet)
+{
+	TankAinComp->SetBarrelReference(BarrelToSet);
 }

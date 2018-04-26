@@ -1,5 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
+#include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 #include "TankAimComp.h"
 
 
@@ -13,6 +13,11 @@ UTankAimComp::UTankAimComp()
 	// ...
 }
 
+
+void UTankAimComp::SetBarrelReference(UStaticMeshComponent * BarrelToSet)
+{
+	Barrel = BarrelToSet;
+}
 
 // Called when the game starts
 void UTankAimComp::BeginPlay()
@@ -32,12 +37,32 @@ void UTankAimComp::TickComponent(float DeltaTime, ELevelTick TickType, FActorCom
 	// ...
 }
 
-void UTankAimComp::AimAt(FVector HitLocation)
+void UTankAimComp::AimAt(FVector HitLocation, float LaunchSpeed)
 {
-	auto OURTANK =GetOwner()->GetName();
+	if (!Barrel) { return; }
 
-	UE_LOG(LogTemp, Warning, TEXT("%s aiming at %s"), *OURTANK, *HitLocation.ToString());
+	FVector OutLaunchVelocity;
+	FVector StartLocation = Barrel->GetSocketLocation(FName("Projectile"));
+	bool bHavesol = UGameplayStatics::SuggestProjectileVelocity
+		(
+		this,
+		OutLaunchVelocity,
+		StartLocation,
+		HitLocation,
+		LaunchSpeed,
+		false,
+		0,
+		0,
+		ESuggestProjVelocityTraceOption::DoNotTrace
+		);
+	if (bHavesol)
+	{
+	auto AimDir = OutLaunchVelocity.GetSafeNormal();
+	 MoveBarrel();
+	}
 
+	void UStaticMeshComponent*MoveBarrel();
+	
 }
 
 
