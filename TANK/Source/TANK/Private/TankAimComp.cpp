@@ -1,6 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-#include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 #include "TankAimComp.h"
+#include "TankBarrel.h"
+#include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
+
 
 
 // Sets default values for this component's properties
@@ -14,7 +16,7 @@ UTankAimComp::UTankAimComp()
 }
 
 
-void UTankAimComp::SetBarrelReference(UStaticMeshComponent * BarrelToSet)
+void UTankAimComp::SetBarrelReference(UTankBarrel * BarrelToSet)
 {
 	Barrel = BarrelToSet;
 }
@@ -58,11 +60,18 @@ void UTankAimComp::AimAt(FVector HitLocation, float LaunchSpeed)
 	if (bHavesol)
 	{
 	auto AimDir = OutLaunchVelocity.GetSafeNormal();
-	 MoveBarrel();
+	MoveBarrelTowards(AimDir);
 	}
 
-	void UStaticMeshComponent*MoveBarrel();
-	
 }
 
+	void UTankAimComp::MoveBarrelTowards(FVector AimDir)
+	{
+		auto BarrelRotation = Barrel->GetForwardVector().Rotation();
+		auto AimAsRotator = AimDir.Rotation();
+		auto DeltaRotator = AimAsRotator - BarrelRotation;
+		
+		Barrel->Elevate(5);
+	}
+	
 
