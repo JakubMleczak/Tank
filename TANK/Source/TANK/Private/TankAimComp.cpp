@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-#include "Tank1.h"
 #include "TankAimComp.h"
+#include "Tank1.h"
+
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 
 
