@@ -15,10 +15,10 @@ class TANK_API ATank1 : public APawn
 public:
 	void Aimat(FVector HitLocation);
 	UFUNCTION(BlueprintCallable, Category = Setup)
-		void SetBarrelReference(UTankBarrel* BarrelToSet);
+		void SetBarrelReference(UStaticMeshComponent* BarrelToSet);
 
 protected:
-	UTankAimComp * TankAinComp = nullptr;
+	UTankAimComp * TankAimComp = nullptr;
 
 
 
