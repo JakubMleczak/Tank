@@ -13,9 +13,9 @@ class TANK_API ATank1 : public APawn
 	GENERATED_BODY()
 	
 public:
-	void Aimat(FVector HitLocation);
+	void AimAt(FVector HitLocation);
 	UFUNCTION(BlueprintCallable, Category = Setup)
-		void SetBarrelReference(UStaticMeshComponent* BarrelToSet);
+		void SetBarrelReference(UTankBarrel* BarrelToSet);
 
 protected:
 	UTankAimComp * TankAimComp = nullptr;

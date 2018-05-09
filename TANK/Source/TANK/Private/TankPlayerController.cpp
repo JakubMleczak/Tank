@@ -42,7 +42,7 @@ void ATankPlayerController::AimTowardsCross()
 	FVector HitLocation;
 	if (GetRayLoc(HitLocation))
 	{
-		GetControlledTank()->Aimat(HitLocation);
+		GetControlledTank()->AimAt(HitLocation);
 	}
 }
 bool ATankPlayerController::GetRayLoc(FVector& HitLocation) const

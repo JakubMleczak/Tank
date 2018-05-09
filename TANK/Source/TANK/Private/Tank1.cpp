@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
 #include "Tank1.h"
+#include "TANK.h"
+
 
 
 
@@ -12,7 +13,7 @@ ATank1::ATank1()
 	PrimaryActorTick.bCanEverTick = true;
 	TankAimComp = CreateDefaultSubobject<UTankAimComp>(FName("Aim Comp"));
 }
-void ATank1::SetBarrelReference(UStaticMeshComponent* BarrelToSet)
+void ATank1::SetBarrelReference(UTankBarrel* BarrelToSet)
 {
 	TankAimComp->SetBarrelReference(BarrelToSet);
 }
@@ -37,7 +38,7 @@ void ATank1::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 }
 
-void ATank1::Aimat(FVector HitLocation)
+void ATank1::AimAt(FVector HitLocation)
 {
 	TankAimComp->AimAt(HitLocation,LaunchSpeed);
 	
